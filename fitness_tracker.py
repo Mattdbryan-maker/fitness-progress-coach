@@ -1,0 +1,178 @@
+import csv
+from datetime import datetime
+import ast
+
+datetime.strptime("12/08/2026", "%d/%m/%Y")
+print (datetime)
+seperator = "=" * 50
+
+def load_workouts(filename):
+    workouts = []
+
+    with open (filename, "r", encoding="utf-8") as file:
+        reader = csv.DictReader(file)
+        
+        for row in reader:
+            row["Weight"] = float(row["Weight"])
+            row["Sets"] = int(row["Sets"])
+            row["Reps"] = ast.literal_eval(row["Reps"])
+            workouts.append (row)
+    return (workouts)
+
+workouts = load_workouts("workouts.csv")
+
+def save_workouts(filename, workouts):
+
+    field_names = ["Date", "Exercise", "Weight", "Sets", "Reps"]
+
+    with open(filename, "w", newline="") as file:
+        writer = csv.DictWriter(file, fieldnames=field_names)
+
+        writer.writeheader()
+
+        for workout in workouts:
+            writer. writerow(workout)
+
+def view_workouts(workouts):
+
+    if not workouts:
+        print("No Workouts Found")
+        return
+
+    workouts_by_date = {}
+
+    for workout in workouts:
+        date = workout["Date"]
+        workouts_by_date.setdefault(date, []).append(workout)     
+
+    for date, daily_workouts in workouts_by_date.items():
+        print(seperator)
+        print(f'Workout on {date}')
+        print(seperator)
+
+        for workout in daily_workouts:
+            print (f'Exercise: {workout["Exercise"]}')
+            print (f'Weight: {workout["Weight"]} kg')
+            print (f'Total Sets: {workout["Sets"]}')
+            print ()
+
+            for set_number, reps in enumerate(workout["Reps"], start = 1):
+                print (f'Set {set_number}: {reps} reps ' 
+                       f' @ {workout["Weight"] }kg'
+                       )
+            print ()
+        
+def add_workout(workouts):
+
+    date = input('What was the date of this workout?:\n')
+    exercise = input('What exercise did you complete?: \n')
+    while True:
+        try:
+            weight = float(input('What weight did you use (kg)?: \n'))
+            if weight >= 0:
+                break
+            else:
+                print("Please enter a numebr greater than or equal to 0")
+        except ValueError:
+            print()
+            print("Please enter a valid number.")
+           
+    while True:   
+        try:     
+            total_sets = int(input('How many sets did you complete?: \n'))
+            if total_sets > 0:
+                reps = []
+                for current_set in range(1, total_sets + 1):
+
+                    while True:
+                        try:
+                            reps_completed = int(input(f'How many reps did you complete in set {current_set}?: \n'))
+                            if reps_completed > 0:
+                                reps.append(reps_completed)
+                                break
+                            else:
+                                print()
+                                print('Please input a number greater than 0.')
+                        except ValueError:
+                            print()
+                            print('Please enter a valid whole number.')
+                        
+                break
+            else:
+                print('Please input a number greater than 0')
+                print()
+        except ValueError:
+            print()
+            print("Please enter a valid whole number.")
+            
+
+    new_exercise = {"Date": date,
+                    "Exercise": exercise,
+                    "Weight": weight,
+                    "Sets": total_sets,
+                    "Reps": reps
+                    }
+    workouts.append(new_exercise)
+    return workouts
+
+def show_menu():
+      print(seperator)
+      print("Fitness Progress Coach".center(50))
+      print(seperator)
+      print ()
+      print('1. View Workouts')
+      print('2. Add workout')
+      print('3. Exit')
+      print()
+
+def main():
+    file_path = "workouts.csv"
+    workouts = load_workouts(file_path)
+    running = True
+    
+    while running:
+
+        show_menu()
+        choice = input("Choose an option: ")
+
+        if choice == "1":
+            view_workouts(workouts)
+
+        elif choice == "2":
+
+            adding_exercise = True
+
+            while adding_exercise:
+                add_workout(workouts)
+
+                while True:
+                    print()
+                    another_workout = input(
+                        "Would you like to add another Workout. Please enter y or n: "
+                    ).lower()
+
+                    if another_workout == "n":
+                        adding_exercise = False
+                        break
+
+                    elif another_workout == "y":
+                        break
+                    
+                    else:   
+                        print("Inavlid input. Please enter y or no")
+
+            save_workouts(file_path, workouts)
+            print ("Workout added and saved successfully.")
+
+        elif choice == "3":
+            running = False
+            print()
+            print("Program closed")
+
+        else:
+            print ("Invalid option. Please choose a valid option.")
+
+if __name__ == "__main__":
+    main()
+
+ 
