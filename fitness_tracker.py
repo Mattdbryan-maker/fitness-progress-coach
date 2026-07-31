@@ -124,10 +124,39 @@ def show_menu():
       print(seperator)
       print ()
       print('1. View Workouts')
-      print('2. Add workout')
-      print('3. Exit')
+      print('2. Add Workout')
+      print('3. Serach Workouts')
+      print('4. Exit')
       print()
 
+def search_workouts(workouts):
+
+    search_workout = input("Enter the name of a Exercise, to view previous stats: "
+                           ).strip().lower()
+    matches = []
+    for workout in workouts:
+        if search_workout in workout["Exercise"].lower():
+            matches.append(workout)
+    if not matches:
+            print()
+            print ("No matching Exercises found")
+            print()
+    else:
+        for match in matches:
+            print ()
+            print(seperator)
+            print(f'Workout on {match["Date"]}')
+            print(seperator)
+            print (f'Exercise: {match["Exercise"]}')
+            print (f'Weight: {match["Weight"]} kg')
+            print (f'Total Sets: {match["Sets"]}')
+            print ()
+            
+            for set_number, reps in enumerate(match["Reps"], start = 1):
+                print (f'Set {set_number}: {reps} reps '
+                        f' @ {match["Weight"] }kg'
+                        )
+                
 def main():
     file_path = "workouts.csv"
     workouts = load_workouts(file_path)
@@ -168,6 +197,9 @@ def main():
             print ("Workout added and saved successfully.")
 
         elif choice == "3":
+            search_workouts(workouts)
+
+        elif choice == "4":
             running = False
             print()
             print("Program closed")

@@ -33,8 +33,8 @@ Version 0.4
 
 Version 0.5
 ---------------
-- ⬜ Sort workout history chronologically
-- ⬜ Validate dates using `datetime`
+- ✅ Sort workout history chronologically
+- ✅ Validate dates using `datetime`
 
 ↓
 
