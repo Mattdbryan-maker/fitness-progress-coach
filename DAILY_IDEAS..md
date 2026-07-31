@@ -170,6 +170,91 @@ Using complete workout sessions will allow the AI to:
 - Suggest changes based on previous sessions.
 - Generate weekly and monthly training summaries.
 
+## GitHub Improvements ##
+
+- Add an `assets/` folder for application screenshots.
+- Display screenshots in the README to showcase the application's features.
+- Keep the README updated with new screenshots as the project evolves.
+- Add a development timeline documenting progress after each major milestone.
+
+## Search Feature Ideas ##
+
+### Future Improvements
+
+- Replace text input with a selectable list of saved exercises.
+- Auto-complete exercise names as the user types.
+- Display recent searches.
+- Filter by exercise, date range or both.
+- Sort search results by newest or oldest.
+- Highlight the matched search term.
+- Display progress over time for the selected exercise.
+- Show personal records alongside search results.
+- Allow filtering by weight, reps or sets.
+- Add fuzzy matching to handle spelling mistakes (e.g. "benh" → "Bench Press").
+
+## Motivation & Rewards System ##
+
+### Long-Term Vision
+
+Introduce a reward system that encourages users to stay consistent with their training and celebrate meaningful progress.
+
+### Potential Features
+
+- 🏅 Achievement badges
+    - First workout completed
+    - 10 workouts completed
+    - 50 workouts completed
+    - 100 workouts completed
+
+- 🔥 Workout streaks
+    - Consecutive training days
+    - Weekly consistency streaks
+    - Monthly consistency awards
+
+- 🎯 Goal setting
+    - Target body weight
+    - Strength goals
+    - Exercise-specific goals
+    - Weekly workout targets
+
+- 📈 Progress milestones
+    - Bench Press +10kg
+    - First bodyweight pull-up
+    - Deadlift 100kg
+    - Squat 140kg
+
+- ⭐ Experience (XP) system
+    - Earn XP for completing workouts
+    - Bonus XP for achieving personal records
+    - Level up as you continue training
+
+- 🏆 Challenges
+    - Complete 3 workouts this week
+    - Train every week for a month
+    - Complete your first push/pull/legs cycle
+
+- 📊 Progress celebrations
+    - Celebrate new personal records
+    - Celebrate consistency milestones
+    - Monthly progress summaries
+
+## Community Features (Long-Term)
+
+- Share workout milestones.
+- Celebrate personal records.
+- Progress journals.
+- Monthly transformation posts.
+- Friends and accountability partners.
+- Private training groups.
+- Challenges (e.g. 8-week strength challenge).
+- Ask the community for advice.
+- AI-assisted feedback on shared workouts.
+- Community-created workout programmes.
+
+### Future Expansion
+
+Potentially integrate with AI to generate personalised goals based on the user's training history, progress and consistency.
+
 # What Makes This App Different?
 
 Many fitness apps focus on recording workouts.

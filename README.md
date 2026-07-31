@@ -16,24 +16,32 @@ This project is being developed incrementally while I continue learning Python, 
 
 ## ✨ Current Features
 
-- ✅ Load workouts from a CSV file
-- ✅ Save workouts to a CSV file
-- ✅ View workout history
+- ✅ Load workouts from CSV
+- ✅ Save workouts to CSV
 - ✅ Add workouts
-- ✅ Chronological workout history
+- ✅ View workout history
+- ✅ Group workouts by date
+- ✅ Display workouts chronologically
 - ✅ Search workouts
-    - Search by Exercise
-    - Search by Date
-- ✅ Partial exercise searching
-- ✅ Case-insensitive searching
-- ✅ Dynamic number of sets
-- ✅ Individual reps for every set
+  - Search by exercise
+  - Search by date
+  - Partial matching
+  - Case-insensitive matching
+- ✅ Delete workouts
+  - Numbered selection
+  - Input validation
+  - Confirmation before deletion
+  - Persistent CSV updates
+- 🟨 Edit workouts
+  - Edit exercise
+  - Edit weight
+  - Edit date
+  - Sets and reps editing in progress
+- ✅ Dynamic sets and reps
 - ✅ Multiple exercise entry
 - ✅ Robust input validation
-- ✅ Modular function structure
-- ✅ Git version control
-- ✅ GitHub repository
-
+- ✅ Reusable helper functions
+- ✅ Git and GitHub version control
 ---
 
 # 🛠 Technologies Used
@@ -100,14 +108,20 @@ The objective is to build software that genuinely helps people improve their fit
 - ✅ Chronological workout history
 - ✅ Date handling using `datetime`
 
-### Version 0.6 *(Current Version)*
+### Version 0.6
+
 - ✅ Search workouts
 - ✅ Search by exercise
 - ✅ Search by date
 
-## Version 0.7
-- ⬜ Edit workouts
-- ⬜ Delete workouts
+### Version 0.7 *(In Progress)*
+
+- ✅ Delete workouts
+- 🟨 Edit workouts
+  - ✅ Exercise
+  - ✅ Weight
+  - ✅ Date
+  - ⬜ Sets and reps
 
 ## Version 0.8
 - ⬜ Personal records
@@ -169,13 +183,17 @@ Fitness Progress Coach/
 
 ## Day 3
 
-- Implemented chronological workout history using `datetime`.
-- Learned lambda functions and sorting with `key=`.
-- Designed and built a complete workout search system.
-- Added searching by exercise.
-- Added searching by date.
-- Refactored the search feature into multiple smaller functions.
-- Successfully tested all search functionality.
+- Added chronological workout sorting using `datetime`.
+- Learned `sorted()`, `key=` and lambda functions.
+- Built search by exercise and search by date.
+- Created a dedicated search submenu.
+- Refactored repeated display logic into `display_workout()`.
+- Built and tested workout deletion.
+- Added validation and confirmation before deletion.
+- Created reusable `select_workout()` logic.
+- Began workout editing.
+- Added editing for exercise, weight and date.
+- Added type-specific validation for text, numbers and dates.
 ---
 
 # 📚 What I'm Learning

@@ -266,125 +266,172 @@ Sort workout dates chronologically using Python's `datetime` module.
 
 "Today i really feel like i've kicked on from that first exciting day, i am really enjoying watching the foundations of this application really come together. I think i have made a lot of meaningful progress and am really hopeful for the future"
 
-## Day 3
+# Day 3
 
-### Version 0.5
+## Objectives
 
-#### Chronological Workout History
+- Implement chronological workout sorting.
+- Complete Version 0.6 search functionality.
+- Begin Version 0.7 workout management features.
+- Continue improving code quality through refactoring.
 
-Successfully implemented chronological workout sorting using Python's `datetime` module.
+---
 
-### New Concepts Learned
+## Features Implemented
 
-- Importing Python modules
+### Chronological Workout Display
+
+Implemented chronological sorting of workouts using Python's `datetime` module.
+
+Learned and applied:
+
 - `datetime.strptime()`
-- Date formatting using `%d/%m/%Y`
-- The `sorted()` function
-- The `key=` parameter
-- Lambda functions
-- Sorting dictionary keys rather than dictionary values
+- `sorted()`
+- `key=` parameter
+- `lambda` functions
 
-This feature allows workouts to be displayed in true chronological order rather than the order they were added.
+Workouts are now displayed from the earliest date to the most recent while still grouping exercises performed on the same day.
 
 ---
 
-### Version 0.6
+### Search Workouts
 
-#### Workout Search System
+Completed Version 0.6.
 
-Designed and implemented a dedicated workout search system.
+Implemented:
 
-Created a search submenu allowing users to choose between multiple search methods.
+- Search by exercise.
+- Search by date.
+- Partial exercise matching.
+- Case-insensitive searching.
+- Handling of searches with no matching workouts.
 
-Features implemented:
+Created a dedicated Search Workouts submenu to improve navigation.
 
-- Search by Exercise
-- Search by Date
-- Partial exercise matching
-- Case-insensitive exercise searching
-- Multiple workout results
-- No-match handling
-- Return to main menu after searching
-
-Searching by date also supports multiple workouts completed on the same day.
+Version 0.6 is now complete.
 
 ---
 
-### Refactoring Progress
+### Refactoring
 
-Improved the overall project structure by decomposing the search functionality into multiple smaller functions.
+Refactored duplicated code to improve readability and maintainability.
 
-Instead of one large search function, the application now uses:
+Created:
 
-- `search_workouts()`
-- `search_exercise()`
-- `search_date()`
+- `display_workout(workout)` – responsible for displaying a single workout.
+- `select_workout(workouts)` – responsible for searching, displaying and returning a selected workout.
 
-This makes the code easier to understand, maintain and extend.
+This significantly reduced duplicated code throughout the project and applied the DRY (Don't Repeat Yourself) principle.
 
 ---
 
-### Testing
+### Delete Workout
+
+Implemented the complete workout deletion workflow.
+
+Features include:
+
+- Search for workouts by exercise.
+- Display numbered matching workouts.
+- Validate workout selection.
+- Display the selected workout before deletion.
+- Confirmation prompt before deleting.
+- Ability to cancel deletion.
+- Permanent removal from the CSV file.
+- Success confirmation after deletion.
+
+Fully tested and confirmed working.
+
+---
+
+### Edit Workout
+
+Started implementation of the workout editing system.
+
+Completed editing of:
+
+- Exercise name
+- Weight
+- Date
+
+Added validation for each field:
+
+Exercise:
+- Cannot be left blank.
+
+Weight:
+- Must be a valid number.
+- Must be greater than or equal to zero.
+
+Date:
+- Must be entered in `dd/mm/yyyy` format.
+- Validated using `datetime.strptime()` to ensure real calendar dates.
+
+Editing of Sets and Reps remains the final feature before completing Version 0.7.
+
+---
+
+## Testing
 
 Successfully tested:
 
-- Exact exercise search
-- Partial exercise search
-- Case-insensitive searching
-- Search by date
-- Multiple results returned
-- Invalid exercise search
-- Invalid date search
-
-All tests passed successfully.
-
----
-
-### Lessons Learned
-
-Today was a significant step forward in learning software engineering rather than just Python syntax.
-
-Key lessons included:
-
-- Breaking large problems into smaller functions.
-- Designing application architecture before writing code.
-- Reusing existing code where possible.
-- Understanding when code duplication should be refactored.
-- Building software one feature at a time while maintaining clean structure.
+- Chronological workout sorting.
+- Search by exercise.
+- Search by date.
+- Partial matching.
+- No-match handling.
+- Workout deletion.
+- Confirmation prompts.
+- Invalid confirmation inputs.
+- CSV persistence after deletion.
+- Exercise editing.
+- Weight editing.
+- Date editing.
+- Input validation for text, numbers and dates.
 
 ---
 
-### Current Version
+## Lessons Learned
 
-Version 0.6
+Today's development focused heavily on improving software structure rather than simply adding features.
 
-Current Features:
+Key concepts learned:
 
-- Load workouts
-- Save workouts
-- View workouts
-- Add workouts
-- Chronological workout history
+- Creating reusable helper functions.
+- Returning dictionaries from functions.
+- Refactoring duplicated code.
+- Updating dictionary values without recreating the dictionary.
+- Data-type specific validation.
+- Using exceptions (`try` / `except`) for user input validation.
+- Using `datetime.strptime()` for date validation.
+
+This was my biggest step so far towards thinking about software architecture rather than individual pieces of code.
+
+---
+
+## Current Project Status
+
+### Version 0.6 ✅ Complete
+
 - Search workouts
-    - Search by exercise
-    - Search by date
-- Dynamic sets and reps
-- Input validation
-- Git & GitHub
+- Search by exercise
+- Search by date
+
+### Version 0.7 🚧 In Progress
+
+Completed:
+- Delete workouts
+- Edit exercise
+- Edit weight
+- Edit date
+
+Remaining:
+- Edit sets and reps
 
 ---
 
-### Next Steps
+## Next Session
 
-Version 0.6 Refactor
+Complete the remaining Edit Sets and Reps functionality before moving on to the next planned version.
 
-- Create `display_workout(workout)` function.
-- Remove duplicated display code.
-- Improve maintainability.
-
-Following that:
-
-Version 0.7
-
-- Edit workouts
-- Delete workouts
+Continue refactoring where appropriate to keep the code modular and reusable.

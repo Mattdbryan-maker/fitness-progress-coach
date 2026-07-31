@@ -49,7 +49,7 @@ Version 0.6
 Version 0.7
 ---------------
 - ⬜ Edit workouts
-- ⬜ Delete workouts
+- ✅ Delete workouts
 
 ↓
 
