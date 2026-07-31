@@ -40,6 +40,7 @@ Version 0.5
 
 Version 0.6
 ---------------
+- ⬜ Search workouts
 - ⬜ Search workouts by exercise
 - ⬜ Search workouts by date
 
@@ -47,15 +48,22 @@ Version 0.6
 
 Version 0.7
 ---------------
-□ Date validation using datetime
+- ⬜ Edit workouts
+- ⬜ Delete workouts
 
 ↓
 
 Version 0.8
 ---------------
-□ Personal records
-
+- ⬜ Personal records
+- ⬜ Progress tracking
+- ⬜ Training volume
 ↓
+
+Version 0.9
+- ⬜ Workout sessions
+- ⬜ Weekly summaries
+- ⬜ Progress analysis
 
 Version 1.0
 ---------------

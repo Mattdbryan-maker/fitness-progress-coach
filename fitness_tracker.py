@@ -2,8 +2,6 @@ import csv
 from datetime import datetime
 import ast
 
-datetime.strptime("12/08/2026", "%d/%m/%Y")
-print (datetime)
 seperator = "=" * 50
 
 def load_workouts(filename):
@@ -45,7 +43,12 @@ def view_workouts(workouts):
         date = workout["Date"]
         workouts_by_date.setdefault(date, []).append(workout)     
 
-    for date, daily_workouts in workouts_by_date.items():
+    sorted_dates = sorted((workouts_by_date),
+                           key=lambda date: datetime.strptime(date, "%d/%m/%Y")
+                           ) 
+    for date in sorted_dates:
+        daily_workouts = workouts_by_date[date]
+
         print(seperator)
         print(f'Workout on {date}')
         print(seperator)
