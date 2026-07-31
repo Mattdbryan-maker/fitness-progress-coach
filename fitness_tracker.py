@@ -129,13 +129,41 @@ def show_menu():
       print('4. Exit')
       print()
 
-def search_workouts(workouts):
-
-    search_workout = input("Enter the name of a Exercise, to view previous stats: "
-                           ).strip().lower()
+def search_date(workouts):
+        
+    serach_date = input("Enter the date, to view the corresponding workout: "
+                               ).strip()
     matches = []
     for workout in workouts:
-        if search_workout in workout["Exercise"].lower():
+        if serach_date in workout["Date"]:
+            matches.append(workout)
+    if not matches:
+            print()
+            print ("No matching Date found")
+            print()
+    else:
+        for match in matches:
+            print ()
+            print(seperator)
+            print(f'Workout on {match["Date"]}')
+            print(seperator)
+            print (f'Exercise: {match["Exercise"]}')
+            print (f'Weight: {match["Weight"]} kg')
+            print (f'Total Sets: {match["Sets"]}')
+            print ()
+                
+            for set_number, reps in enumerate(match["Reps"], start = 1):
+                print (f'Set {set_number}: {reps} reps '
+                        f' @ {match["Weight"] }kg'
+                     )
+
+def search_exercise(workouts):
+    
+    serach_exercise = input("Enter the name of a Exercise, to view previous stats: "
+                               ).strip().lower()
+    matches = []
+    for workout in workouts:
+        if serach_exercise in workout["Exercise"].lower():
             matches.append(workout)
     if not matches:
             print()
@@ -151,11 +179,36 @@ def search_workouts(workouts):
             print (f'Weight: {match["Weight"]} kg')
             print (f'Total Sets: {match["Sets"]}')
             print ()
-            
+                
             for set_number, reps in enumerate(match["Reps"], start = 1):
                 print (f'Set {set_number}: {reps} reps '
                         f' @ {match["Weight"] }kg'
-                        )
+                     )
+
+def search_workouts(workouts):
+
+    print()
+    print(seperator)
+    print("Search Workouts")
+    print(seperator)
+    print()
+    print("1. Search by Exercise")
+    print("2. Serach by Date")
+    print("3. Return")
+
+    choice = int(input("Choose an option:"))
+
+    if choice == 1:
+        search_exercise(workouts)
+
+    elif choice == 2:
+        search_date(workouts)
+
+    elif choice == 3:
+        return
+
+    else:
+        print ("Invalid option")
                 
 def main():
     file_path = "workouts.csv"

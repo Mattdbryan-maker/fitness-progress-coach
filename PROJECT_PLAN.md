@@ -40,9 +40,9 @@ Version 0.5
 
 Version 0.6
 ---------------
-- ⬜ Search workouts
-- ⬜ Search workouts by exercise
-- ⬜ Search workouts by date
+- ✅ Search workouts
+- ✅ Search workouts by exercise
+- ✅ Search workouts by date
 
 ↓
 

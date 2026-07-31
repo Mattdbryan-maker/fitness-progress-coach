@@ -14,24 +14,25 @@ This project is being developed incrementally while I continue learning Python, 
 
 ---
 
-# ✨ Current Features
+## ✨ Current Features
 
 - ✅ Load workouts from a CSV file
 - ✅ Save workouts to a CSV file
-- ✅ Add new exercises
 - ✅ View workout history
-- ✅ Group workouts by date
-- ✅ Record individual reps for every set
+- ✅ Add workouts
+- ✅ Chronological workout history
+- ✅ Search workouts
+    - Search by Exercise
+    - Search by Date
+- ✅ Partial exercise searching
+- ✅ Case-insensitive searching
 - ✅ Dynamic number of sets
-- ✅ Multiple exercise entry in one workout
-- ✅ Input validation for:
-  - Weight
-  - Number of sets
-  - Reps
-  - Menu selections
-  - Yes / No prompts
-- ✅ Clean console interface
+- ✅ Individual reps for every set
+- ✅ Multiple exercise entry
+- ✅ Robust input validation
 - ✅ Modular function structure
+- ✅ Git version control
+- ✅ GitHub repository
 
 ---
 
@@ -95,14 +96,14 @@ The objective is to build software that genuinely helps people improve their fit
 - ✅ Multiple exercise entry
 - ✅ Group workouts by date
 
-## Version 0.5 *(In Progress)*
-- ⬜ Chronological workout history
-- ⬜ Date validation using `datetime`
+### Version 0.5
+- ✅ Chronological workout history
+- ✅ Date handling using `datetime`
 
-## Version 0.6
-- ⬜ Search workouts
-- ⬜ Search by exercise
-- ⬜ Search by date
+### Version 0.6 *(Current Version)*
+- ✅ Search workouts
+- ✅ Search by exercise
+- ✅ Search by date
 
 ## Version 0.7
 - ⬜ Edit workouts
@@ -168,14 +169,13 @@ Fitness Progress Coach/
 
 ## Day 3
 
-Currently in development...
-
-Planned objectives:
-
-- Chronological workout history
-- Date validation
-- Further UI improvements
-
+- Implemented chronological workout history using `datetime`.
+- Learned lambda functions and sorting with `key=`.
+- Designed and built a complete workout search system.
+- Added searching by exercise.
+- Added searching by date.
+- Refactored the search feature into multiple smaller functions.
+- Successfully tested all search functionality.
 ---
 
 # 📚 What I'm Learning

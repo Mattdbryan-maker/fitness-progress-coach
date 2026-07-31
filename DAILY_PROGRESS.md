@@ -265,3 +265,126 @@ Used:
 Sort workout dates chronologically using Python's `datetime` module.
 
 "Today i really feel like i've kicked on from that first exciting day, i am really enjoying watching the foundations of this application really come together. I think i have made a lot of meaningful progress and am really hopeful for the future"
+
+## Day 3
+
+### Version 0.5
+
+#### Chronological Workout History
+
+Successfully implemented chronological workout sorting using Python's `datetime` module.
+
+### New Concepts Learned
+
+- Importing Python modules
+- `datetime.strptime()`
+- Date formatting using `%d/%m/%Y`
+- The `sorted()` function
+- The `key=` parameter
+- Lambda functions
+- Sorting dictionary keys rather than dictionary values
+
+This feature allows workouts to be displayed in true chronological order rather than the order they were added.
+
+---
+
+### Version 0.6
+
+#### Workout Search System
+
+Designed and implemented a dedicated workout search system.
+
+Created a search submenu allowing users to choose between multiple search methods.
+
+Features implemented:
+
+- Search by Exercise
+- Search by Date
+- Partial exercise matching
+- Case-insensitive exercise searching
+- Multiple workout results
+- No-match handling
+- Return to main menu after searching
+
+Searching by date also supports multiple workouts completed on the same day.
+
+---
+
+### Refactoring Progress
+
+Improved the overall project structure by decomposing the search functionality into multiple smaller functions.
+
+Instead of one large search function, the application now uses:
+
+- `search_workouts()`
+- `search_exercise()`
+- `search_date()`
+
+This makes the code easier to understand, maintain and extend.
+
+---
+
+### Testing
+
+Successfully tested:
+
+- Exact exercise search
+- Partial exercise search
+- Case-insensitive searching
+- Search by date
+- Multiple results returned
+- Invalid exercise search
+- Invalid date search
+
+All tests passed successfully.
+
+---
+
+### Lessons Learned
+
+Today was a significant step forward in learning software engineering rather than just Python syntax.
+
+Key lessons included:
+
+- Breaking large problems into smaller functions.
+- Designing application architecture before writing code.
+- Reusing existing code where possible.
+- Understanding when code duplication should be refactored.
+- Building software one feature at a time while maintaining clean structure.
+
+---
+
+### Current Version
+
+Version 0.6
+
+Current Features:
+
+- Load workouts
+- Save workouts
+- View workouts
+- Add workouts
+- Chronological workout history
+- Search workouts
+    - Search by exercise
+    - Search by date
+- Dynamic sets and reps
+- Input validation
+- Git & GitHub
+
+---
+
+### Next Steps
+
+Version 0.6 Refactor
+
+- Create `display_workout(workout)` function.
+- Remove duplicated display code.
+- Improve maintainability.
+
+Following that:
+
+Version 0.7
+
+- Edit workouts
+- Delete workouts
