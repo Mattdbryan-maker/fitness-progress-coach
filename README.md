@@ -1,234 +1,291 @@
-# 💪 Fitness Progress Coach
+# Fitness Progress Coach
 
-A Python-based fitness tracking application built from scratch as part of my software engineering journey.
+A Python-based fitness tracking application for recording workouts, reviewing training history and monitoring long-term progress.
 
-The application allows users to log workouts, track sets and reps, monitor training progress, and forms the foundation of a future AI-powered personal fitness coach.
-
-This project is being developed incrementally while I continue learning Python, software engineering, Git and AI development.
+This project is being developed incrementally as the foundation for a future intelligent fitness-coaching platform.
 
 ---
 
-# 📸 Application Preview
+## Current Version
 
-> *(Screenshots will be added as the application develops.)*
+**Version 0.7**
+
+Version 0.7 is feature-complete and has passed the planned manual test suite.
 
 ---
 
-## ✨ Current Features
+## Current Features
 
-- ✅ Load workouts from CSV
-- ✅ Save workouts to CSV
-- ✅ Add workouts
-- ✅ View workout history
-- ✅ Group workouts by date
-- ✅ Display workouts chronologically
-- ✅ Search workouts
-  - Search by exercise
-  - Search by date
-  - Partial matching
-  - Case-insensitive matching
-- ✅ Delete workouts
-  - Numbered selection
-  - Input validation
-  - Confirmation before deletion
-  - Persistent CSV updates
-- 🟨 Edit workouts
-  - Edit exercise
-  - Edit weight
-  - Edit date
-  - Sets and reps editing in progress
-- ✅ Dynamic sets and reps
-- ✅ Multiple exercise entry
-- ✅ Robust input validation
-- ✅ Reusable helper functions
-- ✅ Git and GitHub version control
+### Workout Logging
+
+- Add exercises to the workout history.
+- Record workout dates.
+- Record weight used.
+- Record a dynamic number of sets.
+- Record different reps for every set.
+- Add multiple exercises during one session.
+
+### Workout History
+
+- Load workouts from CSV.
+- Save workouts permanently.
+- View all recorded workouts.
+- Group exercises completed on the same date.
+- Display workouts in chronological order.
+
+### Search
+
+- Search workouts by exercise.
+- Search workouts by date.
+- Partial exercise matching.
+- Case-insensitive exercise matching.
+- Display multiple matching results.
+- Handle searches with no results.
+- Reject empty searches.
+
+### Workout Management
+
+- Edit exercise names.
+- Edit weight.
+- Edit workout dates.
+- Replace the total number of sets and reps.
+- Edit reps for individual sets.
+- Edit multiple sets before saving.
+- Delete workouts.
+- Confirm deletion before permanently removing data.
+- Cancel editing or deletion safely.
+
+### Validation
+
+- Validate workout dates using `datetime.strptime()`.
+- Reject impossible calendar dates.
+- Reject empty exercise names.
+- Reject invalid numerical input.
+- Reject negative weights.
+- Require positive whole numbers for sets and reps.
+- Validate numbered menu selections.
+- Validate `y/n` confirmation prompts.
+
 ---
 
-# 🛠 Technologies Used
+## Technical Features
 
 - Python
-- CSV Files
-- Git
-- GitHub
-- Visual Studio Code
-
-Future technologies planned:
-
-- Pandas
-- SQLite / Database
-- Streamlit or Flask
-- OpenAI API
-- Data Visualisation
-
----
-
-# 🚀 Future Vision
-
-The long-term goal of Fitness Progress Coach is to evolve into an intelligent AI-powered fitness platform.
-
-Planned features include:
-
-- 🤖 AI workout recommendations
-- 📈 Progress analysis
-- 🏆 Personal records
-- 📊 Training volume calculations
-- 📅 Workout history
-- 🔍 Exercise search
-- 📚 Exercise library
-- 🎥 Exercise tutorials
-- 🍽 Nutrition tracking
-- 😴 Recovery monitoring
-- 🌐 Web application
-- 📱 Mobile application
-
-The objective is to build software that genuinely helps people improve their fitness rather than simply storing workout data.
+- CSV file storage
+- Lists and dictionaries
+- `csv.DictReader`
+- `csv.DictWriter`
+- `datetime`
+- `ast.literal_eval`
+- Functions and return values
+- Nested loops
+- Exception handling
+- Input validation
+- Chronological sorting
+- Lambda functions
+- Git version control
+- GitHub project tracking
 
 ---
 
-# 🗺 Current Development Roadmap
+## Application Structure
 
-## Version 0.1
-- ✅ Load workouts
+```text
+main()
+│
+├── show_menu()
+├── add_workout()
+│   └── get_sets_and_reps()
+│
+├── view_workouts()
+│   └── display_workout()
+│
+├── search_workouts()
+│   ├── search_exercise()
+│   └── search_date()
+│
+└── manage_workouts()
+    ├── edit_workout()
+    │   ├── select_workout()
+    │   ├── display_workout()
+    │   └── get_sets_and_reps()
+    │
+    └── delete_workout()
+        ├── select_workout()
+        └── display_workout()
+```
 
-## Version 0.2
-- ✅ Save workouts
+---
 
-## Version 0.3
-- ✅ View workouts
+## Data Structure
+
+Each workout is stored as a dictionary:
+
+```python
+{
+    "Date": "01/08/2026",
+    "Exercise": "Bench Press",
+    "Weight": 85.0,
+    "Sets": 4,
+    "Reps": [10, 9, 8, 7]
+}
+```
+
+Workout dictionaries are stored inside a list and persisted to `workouts.csv`.
+
+---
+
+## Development Roadmap
+
+### Version 0.1
+
+- ✅ Load workouts from CSV
+
+### Version 0.2
+
+- ✅ Save workouts to CSV
+
+### Version 0.3
+
 - ✅ Add workouts
+- ✅ View workout history
 - ✅ Dynamic sets and reps
 
-## Version 0.4 *(Current Version)*
+### Version 0.4
+
 - ✅ Interactive menu
-- ✅ Input validation
 - ✅ Multiple exercise entry
-- ✅ Group workouts by date
+- ✅ Group exercises by date
+- ✅ Input validation
 
 ### Version 0.5
+
 - ✅ Chronological workout history
-- ✅ Date handling using `datetime`
+- ✅ Date handling with `datetime`
 
 ### Version 0.6
 
 - ✅ Search workouts
 - ✅ Search by exercise
 - ✅ Search by date
+- ✅ Partial and case-insensitive matching
 
-### Version 0.7 *(In Progress)*
+### Version 0.7 — Current Version
 
+- ✅ Edit workouts
 - ✅ Delete workouts
-- 🟨 Edit workouts
-  - ✅ Exercise
-  - ✅ Weight
-  - ✅ Date
-  - ⬜ Sets and reps
+- ✅ Edit individual sets and reps
+- ✅ Reusable workout-selection logic
+- ✅ Full CRUD functionality
+- ✅ Comprehensive manual testing
 
-## Version 0.8
+### Version 0.8
+
 - ⬜ Personal records
 - ⬜ Progress tracking
 - ⬜ Training volume
 
-## Version 0.9
+### Version 0.9
+
 - ⬜ Workout sessions
 - ⬜ Weekly summaries
 - ⬜ Progress analysis
 
-## Version 1.0
-- ⬜ First complete console application
+### Version 1.0
+
+- ⬜ Complete and polished console application
 
 ---
 
-# 📁 Project Structure
+## Development Progress
 
-```
-Fitness Progress Coach/
-│
-├── fitness_tracker.py
-├── workouts.csv
-├── README.md
-├── PROJECT_PLAN.md
-├── DAILY_PROGRESS.md
-├── DAILY_IDEAS.md
-├── KNOWN_ISSUES.md
-└── assets/ (coming soon)
-```
+### Day 1
 
----
+- Created the initial workout tracker structure.
+- Loaded workout records from CSV.
+- Displayed workout history.
+- Began working with lists of dictionaries.
 
-# 📅 Development Timeline
+### Day 2
 
-## Day 1
+- Added workout logging.
+- Added dynamic sets and reps.
+- Added CSV saving.
+- Added multiple exercise entry.
+- Grouped workouts by date.
+- Created the GitHub repository.
 
-- Created the project
-- Built CSV loading and saving
-- Implemented workout viewing
-- Designed the initial project structure
-- Created project documentation
+### Day 3
 
----
-
-## Day 2
-
-- Implemented Add Workout
-- Added dynamic set and rep tracking
-- Built the main menu
-- Refactored the application
-- Added extensive input validation
-- Implemented multiple exercise entry
-- Grouped workouts by date
-- Published the project to GitHub
-- Created the first Git commit
-
----
-
-## Day 3
-
-- Added chronological workout sorting using `datetime`.
-- Learned `sorted()`, `key=` and lambda functions.
-- Built search by exercise and search by date.
-- Created a dedicated search submenu.
-- Refactored repeated display logic into `display_workout()`.
-- Built and tested workout deletion.
-- Added validation and confirmation before deletion.
-- Created reusable `select_workout()` logic.
+- Added chronological workout sorting.
+- Built search by exercise and date.
+- Created reusable display logic.
+- Added workout deletion.
 - Began workout editing.
-- Added editing for exercise, weight and date.
-- Added type-specific validation for text, numbers and dates.
----
 
-# 📚 What I'm Learning
+### Day 4
 
-This project is helping me develop practical experience with:
-
-- Python
-- Functions
-- Dictionaries
-- Lists
-- Loops
-- Exception handling
-- File handling
-- CSV manipulation
-- Program architecture
-- Software engineering principles
-- Git
-- GitHub
-- Documentation
-- User experience design
+- Completed full workout editing.
+- Added individual set-rep editing.
+- Refactored repeated set and rep logic.
+- Improved validation throughout the application.
+- Debugged menu-flow, indentation and persistent-data issues.
+- Completed the Version 0.7 manual test suite.
 
 ---
 
-# 🎯 Project Goal
+## Long-Term Vision
 
-This project is far more than a programming exercise.
+The long-term goal is to develop the project into an intelligent fitness platform that can:
 
-It is my long-term software engineering project and serves as both a learning platform and the foundation for an AI-powered fitness application.
+- Analyse workout history.
+- Track strength and hypertrophy progress.
+- Detect plateaus.
+- Monitor training volume.
+- Identify personal records.
+- Provide personalised fitness guidance.
+- Support goal and reward systems.
+- Eventually provide AI-assisted coaching.
+- Potentially include a progress-focused fitness community.
 
-Every feature is being built incrementally with a focus on writing clean, maintainable code while continuously improving my software development skills.
+The immediate focus remains building and understanding a reliable backend before introducing a graphical interface or AI functionality.
 
 ---
 
-# 👨‍💻 Author
+## Running the Application
 
-**Matthew Bryan**
+1. Ensure Python is installed.
+2. Place `fitness_tracker.py` and `workouts.csv` in the same folder.
+3. Run:
 
-Built as part of my transition into software engineering and artificial intelligence development.
+```bash
+python fitness_tracker.py
+```
+
+---
+
+## Project Status
+
+Version 0.7 is currently:
+
+- ✅ Feature complete
+- ✅ Manually tested
+- ✅ Persisting data successfully
+- ✅ Ready for continued development
+
+---
+## About This Project
+
+This project was not built as a tutorial or copied from an existing application.
+
+It is being developed incrementally to strengthen my understanding of Python, software engineering principles and backend application development. Every version introduces new functionality while improving code quality through refactoring, testing and debugging.
+
+The long-term goal is to evolve this application into an AI-assisted fitness platform.
+
+## Author
+
+Matthew Bryan
+
+Built as part of my Python software development journey while learning programming and software engineering fundamentals.
+
+GitHub: https://github.com/Mattdbryan

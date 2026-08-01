@@ -48,8 +48,19 @@ Version 0.6
 
 Version 0.7
 ---------------
-- ⬜ Edit workouts
+- 🟨 Edit workouts
+  - ✅ Edit exercise
+  - ✅ Edit weight
+  - ✅ Edit date
+  - ⬜ Edit sets and reps
 - ✅ Delete workouts
+
+## Code Quality Improvements
+
+- ✅ Created reusable `display_workout()` function
+- ✅ Created reusable `select_workout()` function
+- ✅ Removed repeated workout-display logic
+- ✅ Removed repeated workout-selection logic
 
 ↓
 

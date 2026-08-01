@@ -435,3 +435,18 @@ Remaining:
 Complete the remaining Edit Sets and Reps functionality before moving on to the next planned version.
 
 Continue refactoring where appropriate to keep the code modular and reusable.
+
+## Day 4 Starting Point
+
+Complete the `Edit Sets and Reps` option inside `edit_workout()`.
+
+Planned flow:
+
+1. Ask for the new total number of sets.
+2. Validate that it is a positive integer.
+3. Create a fresh reps list.
+4. Ask for reps for every set.
+5. Validate each rep value.
+6. Replace both `"Sets"` and `"Reps"` in the selected workout.
+7. Save the updated CSV.
+8. Display the updated workout.
