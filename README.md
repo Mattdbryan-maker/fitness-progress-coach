@@ -98,35 +98,31 @@ Version 0.7 is complete and stable. Version 0.8 currently introduces Personal Re
 
 ## Application Structure
 
+```text
 main()
 │
 ├── show_menu()
-│
 ├── add_workout()
 │   ├── get_sets_and_reps()
 │   └── check_weight_pr()
 │       └── calculate_weight_prs()
-│
 ├── view_workouts()
 │   └── display_workout()
-│
 ├── search_workouts()
 │   ├── search_exercise()
 │   └── search_date()
-│
 ├── view_personal_records()
 │   └── calculate_weight_prs()
-│
-└── manage_workouts()
-    ├── edit_workout()
-    │   ├── select_workout()
-    │   ├── display_workout()
-    │   └── get_sets_and_reps()
-    │
-    └── delete_workout()
-        ├── select_workout()
-        └── display_workout()
-
+├── manage_workouts()
+│   ├── edit_workout()
+│   │   ├── select_workout()
+│   │   ├── display_workout()
+│   │   └── get_sets_and_reps()
+│   └── delete_workout()
+│       ├── select_workout()
+│       └── display_workout()
+└── save_workouts()
+```
 ---
 
 ## Data Structure
