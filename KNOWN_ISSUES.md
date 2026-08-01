@@ -1,8 +1,8 @@
 # Known Issues
 
-## Current Version: 0.7
+## Current Version: 0.8
 
-No known critical issues remain following the Version 0.7 manual test cycle.
+No known critical issues remain following the Version 0.7 manual test cycle and the initial Version 0.8 Personal Records testing.
 
 ---
 
@@ -18,6 +18,7 @@ No known critical issues remain following the Version 0.7 manual test cycle.
 - Fixed incorrect Edit Reps nesting.
 - Fixed inconsistent variable names and spelling errors.
 - Fixed menu retry and cancellation behaviour.
+- Fixed inconsistent exercise capitalisation creating duplicate Personal Records.
 
 ---
 
@@ -28,3 +29,6 @@ No known critical issues remain following the Version 0.7 manual test cycle.
 - Add a cancellation option to workout selection.
 - Split the large `edit_workout()` function into smaller helper functions.
 - Replace CSV storage with a database in a future version.
+- Refactor Personal Record messages into reusable helper functions.
+- Support multiple Personal Record types.
+- Standardise exercise selection using an exercise library rather than free-text input.

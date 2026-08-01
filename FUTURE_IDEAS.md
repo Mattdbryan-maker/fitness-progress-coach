@@ -1,6 +1,8 @@
-#### Exercise Knowledge Base & AI Coaching ####
+# Future Ideas
 
-## Vision
+## Exercise Knowledge Base & AI Coaching 
+
+# Vision
 
 Create a comprehensive exercise knowledge base that goes beyond simply storing exercise names. The goal is to build an educational platform that teaches users how to perform exercises correctly while providing personalised AI coaching based on their training data.
 
@@ -10,7 +12,7 @@ Create a comprehensive exercise knowledge base that goes beyond simply storing e
 
 Instead of manually typing exercise names, users can select exercises from a built-in library.
 
-### Benefits
+# Benefits
 
 - Faster workout logging.
 - Consistent exercise names.
@@ -123,15 +125,15 @@ Create an intelligent fitness platform that combines:
 
 The aim is for the application to become a knowledgeable training partner that helps users improve safely and effectively rather than simply recording workouts.
 
-##### Workout Sessions ####
+## Workout Sessions 
 
-## Vision
+# Vision
 
 Store all exercises completed during a workout inside a single workout session, allowing users to view and analyse each gym session as a whole rather than as individual exercises.
 
 ---
 
-## Concept
+# Concept
 
 Instead of saving every exercise as a completely separate workout, each training session should contain a collection of exercise dictionaries.
 
@@ -149,7 +151,7 @@ Workout Session
 
 ---
 
-## Benefits
+# Benefits
 
 - View previous workouts exactly as they were completed.
 - Makes browsing workout history much easier.
@@ -170,14 +172,14 @@ Using complete workout sessions will allow the AI to:
 - Suggest changes based on previous sessions.
 - Generate weekly and monthly training summaries.
 
-## GitHub Improvements ##
+## GitHub Improvements 
 
 - Add an `assets/` folder for application screenshots.
 - Display screenshots in the README to showcase the application's features.
 - Keep the README updated with new screenshots as the project evolves.
 - Add a development timeline documenting progress after each major milestone.
 
-## Search Feature Ideas ##
+## Search Feature Idea
 
 ### Future Improvements
 
@@ -192,13 +194,13 @@ Using complete workout sessions will allow the AI to:
 - Allow filtering by weight, reps or sets.
 - Add fuzzy matching to handle spelling mistakes (e.g. "benh" → "Bench Press").
 
-## Motivation & Rewards System ##
+## Motivation & Rewards System 
 
-### Long-Term Vision
+# Long-Term Vision
 
 Introduce a reward system that encourages users to stay consistent with their training and celebrate meaningful progress.
 
-### Potential Features
+# Potential Features
 
 - 🏅 Achievement badges
     - First workout completed
@@ -251,11 +253,64 @@ Introduce a reward system that encourages users to stay consistent with their tr
 - AI-assisted feedback on shared workouts.
 - Community-created workout programmes.
 
-### Future Expansion
+## Future Expansion
 
 Potentially integrate with AI to generate personalised goals based on the user's training history, progress and consistency.
 
-# What Makes This App Different?
+## 🏆 Achievement & AI Coaching System
+
+One of the long-term goals for the Fitness Progress Coach is to evolve from simply recording workout data into an intelligent coaching platform that actively motivates and guides users.
+
+# Phase 1 – Personal Records
+
+- Automatically calculate Personal Records from workout history.
+- Display Personal Records in a dedicated section of the application.
+- Track:
+  - Highest weight lifted for each exercise.
+  - Highest reps completed at a given weight.
+- After every workout is logged, automatically check if a new Personal Record has been achieved.
+- Celebrate new Personal Records with congratulatory messages and display the improvement over the previous record.
+
+# Phase 2 – Achievement System
+
+Introduce achievements that reward consistency and progression, for example:
+
+- Strength milestones (e.g. First 100 kg Bench Press).
+- Workout milestones (10, 50, 100 workouts completed).
+- Training streaks.
+- Volume milestones.
+- Exercise-specific achievements.
+
+The goal is to make users feel rewarded and motivated every time they train.
+
+# Phase 3 – Intelligent Coaching
+
+Use workout history to provide personalised coaching suggestions, including:
+
+- Progressive overload recommendations.
+- Plateau detection.
+- Progress summaries.
+- Weekly training analysis.
+- Recovery guidance.
+- Muscle group balance analysis.
+- Exercise recommendations.
+
+The application should gradually transition from a workout tracker into an intelligent training companion that helps users continuously improve through data-driven insights and AI-powered coaching.
+
+## Exercise Library
+
+Replace free-text exercise input with a predefined exercise database.
+
+Benefits:
+
+- Prevent spelling mistakes.
+- Prevent inconsistent capitalisation.
+- Improve search accuracy.
+- Improve Personal Record accuracy.
+- Enable exercise categories.
+- Support future AI recommendations.
+
+## What Makes This App Different?
 
 Many fitness apps focus on recording workouts.
 

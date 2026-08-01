@@ -36,7 +36,7 @@ Begin development of the Fitness Progress Coach application and establish the pr
 - Converted:
   - Weight → `float`
   - Sets → `int`
-  - Reps → `int`
+  - Reps → list of integers
 
 #### Data Saving
 
@@ -264,7 +264,7 @@ Used:
 
 Sort workout dates chronologically using Python's `datetime` module.
 
-"Today i really feel like i've kicked on from that first exciting day, i am really enjoying watching the foundations of this application really come together. I think i have made a lot of meaningful progress and am really hopeful for the future"
+"Today I really feel like I've kicked on from that first exciting day, I am really enjoying watching the foundations of this application really come together. I think i have made a lot of meaningful progress and am really hopeful for the future"
 
 # Day 3
 
@@ -450,3 +450,352 @@ Planned flow:
 6. Replace both `"Sets"` and `"Reps"` in the selected workout.
 7. Save the updated CSV.
 8. Display the updated workout.
+
+# Day 4
+
+## Main Objective
+
+Complete, test and stabilise Version 0.7 of the Fitness Progress Coach before beginning development of Version 0.8.
+
+---
+
+## Version 0.7 Completed
+
+Version 0.7 introduced full workout management functionality.
+
+The application now supports complete CRUD operations:
+
+- Create — Add workouts
+- Read — View and search workouts
+- Update — Edit workouts
+- Delete — Remove workouts
+
+---
+
+## Edit Workout
+
+Completed the full Edit Workout feature.
+
+Users can now edit:
+
+- Exercise name
+- Weight
+- Date
+- Total number of sets
+- Reps for individual sets
+
+### Exercise Editing
+
+- Allows the exercise name to be changed.
+- Rejects empty input.
+- Saves the new exercise name permanently to the CSV file.
+
+### Weight Editing
+
+- Accepts whole numbers and decimal values.
+- Rejects text input.
+- Rejects negative weights.
+- Allows zero for bodyweight exercises.
+- Saves the updated weight permanently.
+
+### Date Editing
+
+- Requires the `dd/mm/yyyy` format.
+- Rejects invalid dates.
+- Rejects impossible calendar dates such as `31/02/2026`.
+- Uses `datetime.strptime()` for validation.
+- Updated workouts remain correctly ordered chronologically.
+
+### Sets and Reps Editing
+
+Users can choose between:
+
+1. Replacing the total number of sets and entering a new reps list.
+2. Keeping the same number of sets and editing individual rep values.
+
+The individual reps menu:
+
+- Displays each current set.
+- Allows multiple sets to be edited.
+- Validates the selected set number.
+- Validates the new rep value.
+- Includes a dynamic Return option.
+- Saves all changes when editing is complete.
+
+---
+
+## Refactoring
+
+Created and reused the following helper functions:
+
+### `display_workout(workout)`
+
+Displays a single workout consistently throughout the application.
+
+Used by:
+
+- View Workouts
+- Search Workouts
+- Edit Workout
+- Delete Workout
+
+### `select_workout(workouts)`
+
+Handles:
+
+- Searching for an exercise.
+- Displaying matching workouts.
+- Numbering the results.
+- Validating the selected workout.
+- Returning the chosen workout dictionary.
+
+Used by:
+
+- Edit Workout
+- Delete Workout
+
+### `get_sets_and_reps()`
+
+Handles:
+
+- Total set validation.
+- Rep input for each set.
+- Positive whole-number validation.
+- Returning the completed set count and reps list.
+
+Used by:
+
+- Add Workout
+- Edit Sets and Reps
+
+These refactors reduced duplicated code and applied the DRY principle.
+
+---
+
+## Bugs Identified and Fixed
+
+Today's testing uncovered and resolved several important bugs:
+
+- Empty exercise searches previously matched every workout.
+- Invalid numbered selections returned users to the previous menu instead of allowing another attempt.
+- Invalid Edit Workout menu choices exited the edit menu.
+- Invalid weight input could be saved as an empty value.
+- Corrupted CSV data prevented the application from loading.
+- Date and weight saving logic had incorrect indentation.
+- The Workout Manager menu was displayed twice.
+- The individual reps menu had incorrect nesting.
+- A misspelled variable caused an empty search to bypass validation.
+- Several spelling and user-message inconsistencies were corrected.
+
+---
+
+## Testing Completed
+
+Successfully tested:
+
+- Adding workouts.
+- Empty exercise validation.
+- Invalid date validation.
+- Invalid weight validation.
+- Set and rep validation.
+- Viewing workouts.
+- Chronological workout sorting.
+- Searching by exercise.
+- Searching by date.
+- Empty search handling.
+- No-match handling.
+- Editing exercise names.
+- Editing weights.
+- Editing dates.
+- Replacing sets and reps.
+- Editing individual sets.
+- Editing multiple sets.
+- Invalid menu selections.
+- Invalid numbered workout selections.
+- Cancelling edits.
+- Deleting workouts.
+- Cancelling deletions.
+- CSV persistence after restarting the application.
+
+All planned Version 0.7 manual tests passed.
+
+---
+
+## Current Project Status
+
+### Version 0.7 — Complete and Stable
+
+Current functionality:
+
+- Add workouts
+- View workout history
+- Group workouts by date
+- Chronological workout display
+- Search by exercise
+- Search by date
+- Edit workouts
+- Delete workouts
+- Persistent CSV storage
+- Input validation
+- Nested menu navigation
+- Reusable helper functions
+
+---
+
+## Lessons Learned
+
+Today was the most technically challenging development session so far.
+
+Key lessons included:
+
+- Debugging nested loops and menu flows.
+- Understanding how indentation affects program behaviour.
+- Distinguishing between fixing code and repairing corrupted stored data.
+- Preventing invalid data from reaching persistent storage.
+- Tracing errors using Python tracebacks.
+- Testing invalid input as thoroughly as valid input.
+- Refactoring repeated logic into reusable helper functions.
+- Persisting through difficult debugging rather than abandoning the feature.
+
+The application is now a complete, tested CRUD console application.
+
+---
+
+## Beginning Version 0.8
+
+Following the completion of Version 0.7, work began on the next major feature: the Personal Records system.
+
+The objective of this feature is to move the application beyond simply recording workout data and begin recognising user progress automatically.
+
+---
+
+## Personal Records
+
+Implemented the first version of the Personal Records system.
+
+The application can now:
+
+- Calculate the highest weight lifted for every exercise.
+- Display Personal Records in a dedicated menu.
+- Automatically detect when a newly logged workout is a new Personal Record.
+- Distinguish between a first recorded exercise and a new Personal Record.
+- Display congratulatory messages when a Personal Record is achieved.
+- Calculate and display the improvement over the previous Personal Record.
+
+---
+
+## New Functions
+
+### `calculate_weight_prs(workouts)`
+
+Loops through every workout and calculates the highest recorded weight for each exercise.
+
+Returns a dictionary containing the current Personal Records.
+
+### `view_personal_records(workouts)`
+
+Displays all Personal Records.
+
+Features include:
+
+- Alphabetical sorting.
+- Clean formatted output.
+- Dedicated menu option.
+
+### `check_weight_pr(workouts, new_workout)`
+
+Checks whether a newly entered workout exceeds the existing Personal Record.
+
+Returns:
+
+- Whether a new Personal Record has been achieved.
+- The previous Personal Record for comparison.
+
+---
+
+## Application Improvements
+
+Added a new main menu option:
+
+- Personal Records
+
+The application now automatically checks every newly logged workout against previous performances.
+
+If a Personal Record is achieved, the application displays:
+
+- Exercise name.
+- Previous best.
+- New best.
+- Improvement.
+
+If the exercise has never previously been recorded, the application instead recognises it as the user's first recorded performance.
+
+---
+
+## Additional Bugs Identified and Fixed
+
+While implementing the Personal Records system an important data consistency issue was discovered.
+
+Exercise names entered using different capitalisation, for example:
+
+- Back Squat
+- Back squat
+- back squat
+
+were incorrectly being treated as separate exercises.
+
+This issue was resolved by standardising exercise names using `.title()` before storing them.
+
+Benefits include:
+
+- Accurate Personal Records.
+- Consistent searching.
+- Reliable future analytics.
+- Improved data quality throughout the application.
+
+---
+
+## Additional Testing
+
+Successfully tested:
+
+- Personal Record calculation.
+- Personal Record display.
+- Main menu integration.
+- New Personal Record detection.
+- First recorded exercise detection.
+- Improvement calculation.
+- Exercise name standardisation.
+- Existing exercise handling.
+- Existing Personal Records remaining unchanged.
+- Multiple Personal Records.
+
+All Version 0.8 Personal Record tests passed successfully.
+
+---
+
+## Additional Lessons Learned
+
+Today's second development session introduced several important software engineering concepts:
+
+- Returning multiple values from functions.
+- Separating calculation from presentation.
+- Reusing existing functions instead of duplicating logic.
+- Designing functions with a single responsibility.
+- Standardising data at the point of entry.
+- Thinking about user experience alongside functionality.
+- Building reusable systems that can support future AI features.
+
+The Personal Records feature now provides the foundation for future achievements, coaching suggestions and intelligent workout analysis.
+
+---
+
+## Next Session
+
+Continue Version 0.8 by:
+
+- Refactoring Personal Record messages into reusable helper functions.
+- Implementing repetition Personal Records.
+- Supporting multiple Personal Record categories.
+- Beginning the Achievement System.
+- Exploring intelligent coaching suggestions based on workout history.

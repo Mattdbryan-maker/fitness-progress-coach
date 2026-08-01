@@ -8,9 +8,9 @@ This project is being developed incrementally as the foundation for a future int
 
 ## Current Version
 
-**Version 0.7**
+**Version 0.8 — In Progress**
 
-Version 0.7 is feature-complete and has passed the planned manual test suite.
+Version 0.7 is complete and stable. Version 0.8 currently introduces Personal Records, automatic record detection and achievement feedback.
 
 ---
 
@@ -28,7 +28,7 @@ Version 0.7 is feature-complete and has passed the planned manual test suite.
 ### Workout History
 
 - Load workouts from CSV.
-- Save workouts permanently.
+- Save workouts persistently to CSV.
 - View all recorded workouts.
 - Group exercises completed on the same date.
 - Display workouts in chronological order.
@@ -66,6 +66,14 @@ Version 0.7 is feature-complete and has passed the planned manual test suite.
 - Validate numbered menu selections.
 - Validate `y/n` confirmation prompts.
 
+### 🏆 Personal Records
+
+- Automatically calculates the highest weight lifted for every exercise.
+- Displays Personal Records in a dedicated menu.
+- Detects new Personal Records immediately after workouts are logged.
+- Distinguishes between first recorded performances and new Personal Records.
+- Displays congratulatory messages showing previous best, new best and improvement.
+
 ---
 
 ## Technical Features
@@ -90,12 +98,14 @@ Version 0.7 is feature-complete and has passed the planned manual test suite.
 
 ## Application Structure
 
-```text
 main()
 │
 ├── show_menu()
+│
 ├── add_workout()
-│   └── get_sets_and_reps()
+│   ├── get_sets_and_reps()
+│   └── check_weight_pr()
+│       └── calculate_weight_prs()
 │
 ├── view_workouts()
 │   └── display_workout()
@@ -103,6 +113,9 @@ main()
 ├── search_workouts()
 │   ├── search_exercise()
 │   └── search_date()
+│
+├── view_personal_records()
+│   └── calculate_weight_prs()
 │
 └── manage_workouts()
     ├── edit_workout()
@@ -113,7 +126,6 @@ main()
     └── delete_workout()
         ├── select_workout()
         └── display_workout()
-```
 
 ---
 
@@ -170,7 +182,7 @@ Workout dictionaries are stored inside a list and persisted to `workouts.csv`.
 - ✅ Search by date
 - ✅ Partial and case-insensitive matching
 
-### Version 0.7 — Current Version
+### Version 0.7 — Complete
 
 - ✅ Edit workouts
 - ✅ Delete workouts
@@ -179,11 +191,19 @@ Workout dictionaries are stored inside a list and persisted to `workouts.csv`.
 - ✅ Full CRUD functionality
 - ✅ Comprehensive manual testing
 
-### Version 0.8
+### Version 0.8 — In Progress
 
-- ⬜ Personal records
-- ⬜ Progress tracking
-- ⬜ Training volume
+- ✅ Calculate highest-weight Personal Records
+- ✅ Display Personal Records
+- ✅ Add Personal Records to the main menu
+- ✅ Automatically detect new Personal Records
+- ✅ Recognise first recorded performances
+- ✅ Display Personal Record celebration messages
+- ✅ Calculate improvement over the previous record
+- ⬜ Track repetition Personal Records
+- ⬜ Support multiple Personal Record categories
+- ⬜ Add progress tracking
+- ⬜ Add training-volume analysis
 
 ### Version 0.9
 
@@ -231,6 +251,11 @@ Workout dictionaries are stored inside a list and persisted to `workouts.csv`.
 - Improved validation throughout the application.
 - Debugged menu-flow, indentation and persistent-data issues.
 - Completed the Version 0.7 manual test suite.
+- Began Version 0.8.
+- Added highest-weight Personal Records.
+- Added automatic new-record detection.
+- Added first-performance and achievement messages.
+- Standardised exercise-name capitalisation.
 
 ---
 
@@ -266,12 +291,12 @@ python fitness_tracker.py
 
 ## Project Status
 
-Version 0.7 is currently:
+Version 0.8 is currently:
 
-- ✅ Feature complete
-- ✅ Manually tested
-- ✅ Persisting data successfully
-- ✅ Ready for continued development
+- 🚧 In active development
+- ✅ Version 0.7 complete and stable
+- ✅ Personal Records implemented and manually tested
+- ✅ Persisting workout data successfully
 
 ---
 ## About This Project

@@ -115,7 +115,7 @@ def add_workout(workouts):
     while True:
         exercise = input(
             "What exercise did you complete?:\n"
-        ).strip()
+        ).strip().title()
 
         if exercise:
             break
@@ -144,8 +144,40 @@ def add_workout(workouts):
                     "Sets": total_sets,
                     "Reps": reps
                     }
-    
+
+    is_new_pr, previous_pr = check_weight_pr(workouts, new_exercise)
+
     workouts.append(new_exercise)
+
+    if previous_pr is None:
+        print()
+        print(separator)
+        print("🏆 FIRST RECORDED PERFORMANCE!")
+        print(separator)
+        print()
+        print(f'Exercise: {new_exercise["Exercise"]}')
+        print()
+        print(f'Weight: {new_exercise["Weight"]} kg')
+        print()
+        print("Great start! This is your first personal record for this exercise, time to build on this! 💪")
+
+    elif is_new_pr:
+            
+        improvement = new_exercise["Weight"] - previous_pr
+
+        print()
+        print(separator)
+        print("🏆 NEW PERSONAL RECORD!")
+        print(separator)
+        print()
+        print(f'Exercise: {new_exercise["Exercise"]}')
+        print()
+        print(f'Previous best: {previous_pr} kg')
+        print(f'New best: {new_exercise["Weight"]} kg')
+        print(f'Improvement: {improvement} kg')
+        print()
+        print("Fantastic work! Keep pushing! 💪")
+
     return workouts
 
 def show_menu():
@@ -156,8 +188,9 @@ def show_menu():
       print('1. View Workouts')
       print('2. Add Workout')
       print('3. Search Workouts')
-      print('4. Manage Workouts')
-      print('5. Exit')
+      print('4. Personal Records')
+      print('5. Manage Workouts')
+      print('6. Exit')
       print()
 
 def display_workout(match):
@@ -168,7 +201,7 @@ def display_workout(match):
                     
         for set_number, reps in enumerate(match["Reps"], start = 1):
             print (f'Set {set_number}: {reps} reps '
-                    f' @ {match["Weight"] }kg'
+                    f' @ {match["Weight"]} kg'
                     )
 
 def search_date(workouts):
@@ -269,7 +302,7 @@ def search_workouts(workouts):
 def select_workout(workouts):
 
     while True:
-        search_exercise = input("Enter the name of a Exercise, to view specific workouts: "
+        search_exercise = input("Enter the name of a exercise to view specific workouts: "
                                        ).strip().lower()
 
         if search_exercise:
@@ -383,7 +416,7 @@ def edit_workout (filename, workouts):
         if choice == "1":
 
             while True:
-                edit_exercise = input("What would you like to change the exercise to?: ").strip()
+                edit_exercise = input("What would you like to change the exercise to?: ").strip().title()
 
                 if edit_exercise:
                     selected_workout["Exercise"] = edit_exercise
@@ -525,7 +558,7 @@ def edit_workout (filename, workouts):
 
                                     if 0 <= set_index < len(selected_workout["Reps"]):
                                         while True:
-                                            
+
                                             try:
                                                 new_reps = int(input("What is the new number of reps?: "))
 
@@ -565,7 +598,9 @@ def manage_workouts(filename, workouts):
         print("2. Delete Workout")
         print("3. Return")
 
-        option = (input("Please Enter the option you would like to execute: "))
+        option = (input(
+            "Please Enter the option you would like to execute: "
+            ).strip())
 
         if option == "1":
             edit_workout(filename, workouts)
@@ -578,6 +613,55 @@ def manage_workouts(filename, workouts):
 
         else:
             print("Invalid option. Please input 1, 2 or 3")
+
+def calculate_weight_prs(workouts):
+
+    weight_prs = {}
+
+    for workout in workouts:
+        exercise = workout["Exercise"]
+        weight = workout["Weight"]
+
+        if exercise not in weight_prs:
+            weight_prs[exercise] = weight
+
+        else:
+            if weight_prs[exercise] < weight:
+                weight_prs[exercise] = weight
+    return weight_prs
+
+def check_weight_pr(workouts, new_workout):
+
+    exercise = new_workout["Exercise"]
+    new_weight = new_workout["Weight"]
+
+    current_prs = calculate_weight_prs(workouts)
+    previous_pr = current_prs.get(exercise)
+
+    if previous_pr is None:
+        return True, None
+    
+    elif new_weight > previous_pr:
+        return True, previous_pr
+
+    else:
+        return False, previous_pr
+
+def view_personal_records(workouts):
+
+    weight_prs = calculate_weight_prs(workouts)
+
+    print()
+    print(separator)
+    print("Personal Records")
+    print(separator)
+    print()
+
+    for exercise, weight in sorted(weight_prs.items()):
+
+        print(exercise)
+        print(f'Highest Weight: {weight} kg')
+        print()
 
 def main():
     file_path = "workouts.csv"
@@ -603,7 +687,7 @@ def main():
                     print()
                     another_workout = input(
                         "Would you like to add another Workout. Please enter y or n: "
-                    ).lower()
+                    ).strip().lower()
 
                     if another_workout == "n":
                         adding_exercise = False
@@ -622,9 +706,12 @@ def main():
             search_workouts(workouts)
 
         elif choice == "4":
-                    manage_workouts(file_path, workouts)
+            view_personal_records(workouts)
 
         elif choice == "5":
+            manage_workouts(file_path, workouts)
+
+        elif choice == "6":
             running = False
             print()
             print("Program closed")
